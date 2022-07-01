@@ -2,7 +2,7 @@ package co.edu;
 
 public class HelloWorld {
 	public static void main(String[] args) {
-		String name = "이주훈";
+		String name = "이현성";
 		
 		int myAge = 20;
 		int yourAge;
