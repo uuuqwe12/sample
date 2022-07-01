@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class ex05 {
 	public static void main(String[] args) {
 		
-	//String name = new String("홍길동");
+//		String name = new String("홍길동");
 		
 		Scanner sn = new Scanner(System.in);
 		
