@@ -19,7 +19,7 @@ public class ex03 {
 		System.out.println("합 결과: " + result);
 		System.out.printf("합은 %10.2f 입니다.",result);
 		System.out.printf("\n저의 이름은 %s이고, 나이는 %d 입니다.","홍길동",14);
-		
+		/
 		//이름,나이,몸무게(소수점)
 		String name = "이현성";
 		int h1 = 29;
