@@ -5,15 +5,36 @@ import java.util.Scanner;
 
 /*
 * 등록/ 조회/ 수정/ 삭제/ 리스트
+* id:user1, passwd: 1212 => 로그인되었습니다!! 비밀번호 틀리면 절대 입력 못하도록? (아이디,비번을 확인하세요!!)
 */
 public class BoardApp {
 	public static void main(String[] args) {
 		Board[] boards = new Board[100];
 		Scanner sn = new Scanner(System.in);
 
+		// 로그인 처리 기능.
+		String id = "user1";
+		String passwd = "1212";
 		boolean run = true;
 
 		while (run) {
+			System.out.println("아이디를 입력하세요");
+			String selectId = sn.nextLine();
+
+			System.out.println("비밀번호를 입력하세요");
+			String selectPasswd = sn.nextLine();
+
+			if (selectId.equals(id) && selectPasswd.equals(passwd)) {
+				System.out.println("로그인 되었습니다!!");
+				break;
+			} else {
+				System.out.println("아이디, 비밀번호를 확인하세요!!");
+			}
+
+		}
+
+		while (run) {
+
 			System.out.println("1.등록 2.조회 3.수정 4.삭제 5.리스트 6.종료");
 			System.out.println("선택> ");
 
@@ -50,14 +71,14 @@ public class BoardApp {
 				// 게시글 조회:제목으로 조회.
 				System.out.println("조회할 제목을 입력하세요.");
 				String findTitle = sn.nextLine();
-				for(int i=0; i<boards.length;i++) {
-					if(boards[i] != null && boards[i].getTitle().equals(findTitle)) {
-						System.out.printf("제목은 %s, 내용은 %s, 작성자는 %s, 작성일시 %s, 조회수 %d \n",
-											boards[i].getTitle(), boards[i].getContent(), boards[i].getWriter(), 
-											boards[i].getCreateDate(), boards[i].getHitCount());
-						//카운트 증가.
-					int cnt = boards[i].getHitCount();
-					boards[i].setHitCount(++cnt);
+				for (int i = 0; i < boards.length; i++) {
+					if (boards[i] != null && boards[i].getTitle().equals(findTitle)) {
+						System.out.printf("제목은 %s, 내용은 %s, 작성자는 %s, 작성일시 %s, 조회수 %d \n", boards[i].getTitle(),
+								boards[i].getContent(), boards[i].getWriter(), boards[i].getCreateDate(),
+								boards[i].getHitCount());
+						// 카운트 증가.
+						int cnt = boards[i].getHitCount();
+						boards[i].setHitCount(++cnt);
 					}
 
 				}
@@ -65,24 +86,23 @@ public class BoardApp {
 			} else if (selectNo == 3) {
 				System.out.println("수정할 글의 제목을 입력하세요.");
 				String findTitle = sn.nextLine();
-				for(int i=0;i<boards.length;i++) {
-					if(boards[i] != null && boards[i].getTitle().equals(findTitle)) {
+				for (int i = 0; i < boards.length; i++) {
+					if (boards[i] != null && boards[i].getTitle().equals(findTitle)) {
 						System.out.println("새로 입력할 내용을 작성하세요.");
 						String newContent = sn.nextLine();
 						boards[i].setContent(newContent);
-						
+
 //						System.out.println("새로 입력할 제목을 작성하세요.");
 //						String newTitle = sn.nextLine();
 //						boards[i].setTitle(newTitle);
 					}
 				}
-				
 
 			} else if (selectNo == 4) {
 				System.out.println("삭제할 글의 제목을 입력하세요.");
 				String deleteTitle = sn.nextLine();
-				for(int i=0;i<boards.length;i++) {
-					if(boards[i] != null && boards[i].getTitle().equals(deleteTitle)) {
+				for (int i = 0; i < boards.length; i++) {
+					if (boards[i] != null && boards[i].getTitle().equals(deleteTitle)) {
 						boards[i] = null;
 					}
 				}
@@ -92,9 +112,9 @@ public class BoardApp {
 				System.out.println("================== 글목록 ==================");
 				for (int i = 0; i < boards.length; i++) {
 					if (boards[i] != null) {
-						System.out.printf("제목은 %s, 내용은 %s, 작성자는 %s, 작성일시 %s, 조회수 %d \n",
-								boards[i].getTitle(), boards[i].getContent(), boards[i].getWriter(), 
-								boards[i].getCreateDate(), boards[i].getHitCount());
+						System.out.printf("제목은 %s, 내용은 %s, 작성자는 %s, 작성일시 %s, 조회수 %d \n", boards[i].getTitle(),
+								boards[i].getContent(), boards[i].getWriter(), boards[i].getCreateDate(),
+								boards[i].getHitCount());
 					}
 				}
 

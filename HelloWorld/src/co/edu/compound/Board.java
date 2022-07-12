@@ -9,10 +9,26 @@ public class Board {
 	private String writer;
 	private Date createDate;
 	private int hitCount;
+	private String id;
+	private String passwd;
 
 	// 생성자.
 
 	// getter, setter
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
+	public String getId() {
+		return id;
+	}
+	
+	public String getPasswd() {
+		return passwd;
+	}
 
 	public String getTitle() {
 		return title;
